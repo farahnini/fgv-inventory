@@ -37,8 +37,10 @@
                             <label for="name">Quantity<span class="text-danger">*</span></label>
                             <input type="number" name="quantity" class="form-control" placeholder="Enter quantity" required>
                         </div>
-                    
-                
+                        <div class="form-group">
+                            <label for="image">Image<span class="text-danger">*</span></label>
+                            <input type="file" name="image" class="form-control">
+                        </div>
                         <div class="form-group mt-3 text-right">
                             <a href="{{ route('inventory-categories.index') }}" class="btn btn-secondary" style="margin-right: 4px;">Back</a>
                             <button type="reset" class="btn btn-warning" style="margin-right:4px;">Reset</button>

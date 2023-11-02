@@ -6,6 +6,8 @@ use App\Models\InventoryItem;
 use App\Models\InventoryCategory;
 
 use Illuminate\Http\Request;
+use File;
+use Storage;
 
 class InventoryItemController extends Controller
 {
@@ -43,6 +45,15 @@ class InventoryItemController extends Controller
         $inventory_item = InventoryItem::create($request->all());
 
         // upload inv items photo
+        if($request->hasFile('image')){
+            // rename file 56-2023-11-2.jpeg
+            $filename = $inventory_item->id.'-'.date("Y-m-d").'.'.$request->image->getClientOriginalExtension();
+            // store in storage
+            Storage::disk('public')->put($filename, File::get($request->image));
+
+            // update in table
+            $inventory_item->update(['image' => $filename]);
+        }
 
         // send notification
 

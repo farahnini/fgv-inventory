@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->decimal('weight',6,2);
             $table->string('colour')->nullable();
+            $table->string('image')->nullable();
             $table->string('reference_number')->nullable();
             $table->integer('quantity');
             $table->timestamps();

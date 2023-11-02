@@ -66,6 +66,7 @@
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Category</th>
+                                <th>Image</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
                             </tr>
@@ -76,6 +77,9 @@
                                     <td>{{ $inventory_item->name }}</td>
                                     <td>{{ $inventory_item->description }}</td>
                                     <td>{{ $inventory_item->inventoryCategory->name }}</td>
+                                    <td>
+                                        <img src="{{ $inventory_item->image_url }}" height="100">
+                                    </td>
                                     <td>{{ $inventory_item->created_at }}</td>
                                     <td>{{ $inventory_item->updated_at }}</td>
                                 </tr>
