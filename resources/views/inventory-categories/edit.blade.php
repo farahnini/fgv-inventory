@@ -64,6 +64,28 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageInput = document.getElementById('imageInput');
+        const preview = document.getElementById('preview');
+        const resetButton = document.querySelector('button[type="reset"]');
 
+        imageInput.addEventListener('change', evt => {
+            const [file] = imageInput.files;
+            if (file) {
+                preview.style.display = 'block';
+                preview.src = URL.createObjectURL(file);
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+
+        resetButton.addEventListener('click', function () {
+            // Clear the image preview when the reset button is clicked
+            preview.style.display = 'none';
+            preview.src = '';
+        });
+    });
+</script>
 
 @endsection
