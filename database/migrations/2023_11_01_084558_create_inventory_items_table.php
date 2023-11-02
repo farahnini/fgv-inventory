@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('inventory_items', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->foreignId('category_id')->reference('inventory_categories');
+            $table->foreignId('category_id')->constrained('inventory_categories');
             $table->string('description')->nullable();
             $table->decimal('weight',6,2);
             $table->string('colour')->nullable();

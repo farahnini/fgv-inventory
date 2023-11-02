@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('inventory_item_settings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_id')->reference('item_inventories');
+            $table->foreignId('item_id')->constrained('inventory_items');
             $table->integer('minimum_number_item_alert');
             $table->timestamps();
         });

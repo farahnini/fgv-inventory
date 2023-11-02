@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->reference('users');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('data');
             $table->string('type');
             $table->timestamps();
