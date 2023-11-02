@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InventoryCategoryController;
+use App\Http\Controllers\InventoryItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/users',[UserController::class,'index'])->name('users.index')->middleware('auth');
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create')->middleware('auth');
 Route::post('/users/create', [UserController::class, 'store'])->name('users.store')->middleware('auth');
-Route::get('/users/{user}/show', [UserController::class, 'show'])->name('users.show')->middleware('auth');
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
 Route::post('/users/{user}/edit', [UserController::class, 'update'])->name('users.update')->middleware('auth');
 Route::get('/users/{user}/delete',[UserController::class,'delete'])->name('users.delete')->middleware('auth');
@@ -39,4 +40,9 @@ Route::get('/inventory-categories/{inventory_category}/show', [InventoryCategory
 Route::get('/inventory-categories/{inventory_category}/edit', [InventoryCategoryController::class, 'edit'])->name('inventory-categories.edit')->middleware('auth');
 Route::post('/inventory-categories/{inventory_category}/edit', [InventoryCategoryController::class, 'update'])->name('inventory-categories.update')->middleware('auth');
 Route::get('/inventory-categories/{inventory_category}/delete',[InventoryCategoryController::class,'delete'])->name('inventory-categories.delete')->middleware('auth');
+
+Route::get('/inventory-items', [InventoryItemController::class, 'index'])->name('inventory-items.index');
+Route::get('/inventory-items/create', [InventoryItemController::class, 'create'])->name('inventory-items.create')->middleware('auth');
+Route::post('/inventory-items/create', [InventoryItemController::class, 'store'])->name('inventory-items.store')->middleware('auth');
+
 

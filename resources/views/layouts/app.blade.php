@@ -46,7 +46,7 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Item</a>
+                            <a class="nav-link" href="{{ route('inventory-items.index') }}">Item</a>
                         </li>
                     </ul>
 

@@ -32,13 +32,14 @@
             {
                 extend: 'pdf',
                 exportOptions: {
-                    columns: [0, 1, 2],
+                    columns: [0, 1, 3],
                 },
             },
             {
                 extend: 'print',
                 exportOptions: {
-                    columns: [0, 1, 2],
+                    stripHtml : false,
+                    columns: [0, 1, 3],
                 },
             },
         ],
@@ -65,6 +66,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th>Total Items</th>
                                 <th>Image</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
@@ -76,6 +78,7 @@
                                 <tr>
                                     <td>{{ $inventory_category->name }}</td>
                                     <td>{{ $inventory_category->description }}</td>
+                                    <td>{{ $inventory_category->inventoryItems()->count() }}</td>
                                     <td>
                                         @if($inventory_category->image)
                                             <img src="{{ asset('images/' . $inventory_category->image) }}" alt="{{ $inventory_category->name }}" width="100">

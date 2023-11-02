@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\InventoryItem;
+use App\Models\InventoryCategory;
+
 use Illuminate\Http\Request;
 
 class InventoryItemController extends Controller
@@ -12,7 +14,11 @@ class InventoryItemController extends Controller
      */
     public function index()
     {
-        //
+        // query all items from tables 'inventory_items' using model InventoryItem
+        $inventory_items = InventoryItem::all();
+
+        // return to resources/views/inventory-items/index.blade.php
+        return view('inventory-items.index', compact('inventory_items'));
     }
 
     /**
@@ -20,7 +26,12 @@ class InventoryItemController extends Controller
      */
     public function create()
     {
-        //
+        // query all categories using model InventoryCategory
+        $inventory_categories = InventoryCategory::all();
+
+        // return create form
+        return view('inventory-items.create', compact('inventory_categories'));
+
     }
 
     /**
@@ -28,7 +39,15 @@ class InventoryItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // store input with mass assignment
+        $inventory_item = InventoryItem::create($request->all());
+
+        // upload inv items photo
+
+        // send notification
+
+        // return to index
+        return redirect()->route('inventory-items.index');
     }
 
     /**

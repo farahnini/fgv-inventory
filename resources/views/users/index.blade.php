@@ -84,13 +84,13 @@
                                         <td>{{ $user->created_at }}</td>
                                         <td>{{ $user->updated_at }}</td>
                                         <td style="white-space: nowrap;">
-                                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-primary" style="margin-right:2px;">
+                                            <a href="{{ route('users.show', $user) }}" class="btn btn-sm btn-primary" style="margin-right:2px;">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-success" style="margin-right:2px;">
+                                            <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-success" style="margin-right:2px;">
                                                 <i class="fas fa-edit"></i> 
                                             </a>
-                                            <a href="{{ route('users.delete', $user->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">
+                                            <a href="{{ route('users.delete', $user) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>
