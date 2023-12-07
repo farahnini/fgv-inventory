@@ -32,4 +32,15 @@ class InventoryItem extends Model
 
         return 'https://www.fgvholdings.com/wp-content/uploads/2019/11/placeholder-logo.png';
     }
+
+    // item -> setting HasOne, FK inventory_item_id -> item_id
+    public function inventoryItemSetting()
+    {                       // MODEL                       // FK        // PK
+        return $this->hasOne(inventoryItemSetting::class, 'item_id');
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'item_order', 'item_id')->withPivot('quantity');
+    }
 }

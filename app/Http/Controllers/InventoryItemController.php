@@ -44,6 +44,13 @@ class InventoryItemController extends Controller
         // store input with mass assignment
         $inventory_item = InventoryItem::create($request->all());
 
+        // create inventory item setting, create using relationship
+        $inventory_item_setting = $inventory_item
+                                    ->inventoryItemSetting()
+                                    ->create([
+                                        'minimum_number_item_alert' => 10
+                                    ]);
+
         // upload inv items photo
         if($request->hasFile('image')){
             // rename file 56-2023-11-2.jpeg

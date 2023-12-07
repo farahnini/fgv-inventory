@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class InventoryItemSetting extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'minimum_number_item_alert',
+    ];
+
+    public function inventoryItem()
+    {
+        return $this->belongsTo(InventoryItem::class);
+    }
 }

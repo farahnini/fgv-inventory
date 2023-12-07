@@ -18,6 +18,19 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Available Items') }}</div>
+
+                <div class="card-body">
+                   @foreach($available_items as $item)
+                        {{ $item->name }} - {{ $item->orders->sum('pivot.quantity') }}/{{ $item->quantity }} | Balance: {{ $item->quantity -  $item->orders->sum('pivot.quantity')}} <br>
+                   @endforeach
+                   <a href="{{ route('orders.store') }}" class="btn btn-primary">Create Order Now</a>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 @endsection
