@@ -7,4 +7,4 @@
 5. ensure create database
 6. php artisan migrate
 7. npm install
-8. npm run build (vite) npm run build (mix)
+8. npm run build (vite) npm run dev (mix)
