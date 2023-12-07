@@ -24,7 +24,7 @@
                                     <th>Ordered by</th>
                                     <th>Ordered date</th>
                                     <th>Item</th>
-                                    <th>Sum items ordered</th>
+                                    <th class="text-center">Sum items ordered</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +40,7 @@
                                                 <tr>
                                                     @endif
                                                     <td>{{ $item->name }}</td>
-                                                    <td>{{ $item->pivot->quantity }}</td>
+                                                    <td class="text-center">{{ $item->pivot->quantity }}</td>
                                                     @if ($first)
                                                 </tr>
                                                 @php $first = false; @endphp
