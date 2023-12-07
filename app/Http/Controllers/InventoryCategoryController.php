@@ -32,19 +32,19 @@ class InventoryCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the image validation rules as needed
-        ], 
-            ['name.required' => 'The name field is required.',
-            'name.max' => 'The name may not be greater than :max characters.',
-            'description.required' => 'The description field is required.',
-            'image.required' => 'The image field is required.',
-            'image.image' => 'The uploaded file must be an image.',
-            'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
-            'image.max' => 'The image may not be greater than :max kilobytes.',]
-        );
+        // $validator = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'description' => 'required|string',
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the image validation rules as needed
+        // ], 
+        //     ['name.required' => 'The name field is required.',
+        //     'name.max' => 'The name may not be greater than :max characters.',
+        //     'description.required' => 'The description field is required.',
+        //     'image.required' => 'The image field is required.',
+        //     'image.image' => 'The uploaded file must be an image.',
+        //     'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
+        //     'image.max' => 'The image may not be greater than :max kilobytes.',]
+        // );
 
         // Handle the image upload
         if ($request->hasFile('image')) {

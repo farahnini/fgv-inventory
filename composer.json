@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
+        "owen-it/laravel-auditing": "^13.5",
         "php-flasher/flasher-laravel": "^1.15"
     },
     "require-dev": {
