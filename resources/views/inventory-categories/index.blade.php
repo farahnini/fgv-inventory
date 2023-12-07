@@ -32,13 +32,15 @@
             {
                 extend: 'pdf',
                 exportOptions: {
-                    columns: [0, 1, 2],
+                    stripHtml: false,
+                    columns: [0, 1, 3],
                 },
             },
             {
                 extend: 'print',
                 exportOptions: {
-                    columns: [0, 1, 2],
+                    stripHtml: false,
+                    columns: [0, 1, 2, 3],
                 },
             },
         ],
@@ -66,6 +68,7 @@
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Image</th>
+                                <th>Total items</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
                                 <th>Operation</th>
@@ -83,16 +86,17 @@
                                             No Image
                                         @endif
                                     </td>
+                                    <td>{{ $inventory_category->inventoryItems()->count() }}</td>
                                     <td>{{ $inventory_category->created_at }}</td>
                                     <td>{{ $inventory_category->updated_at }}</td>
                                     <td style="white-space: nowrap;">
-                                        <a href="{{ route('inventory-categories.show', $inventory_category->id) }}" class="btn btn-sm btn-primary" style="margin-right:2px;">
+                                        <a href="{{ route('inventory-categories.show', $inventory_category) }}" class="btn btn-sm btn-primary" style="margin-right:2px;">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('inventory-categories.edit', $inventory_category->id) }}" class="btn btn-sm btn-success" style="margin-right:2px;">
+                                        <a href="{{ route('inventory-categories.edit', $inventory_category) }}" class="btn btn-sm btn-success" style="margin-right:2px;">
                                             <i class="fas fa-edit"></i> 
                                         </a>
-                                        <a href="{{ route('inventory-categories.delete', $inventory_category->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">
+                                        <a href="{{ route('inventory-categories.delete', $inventory_category) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this category?');">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>

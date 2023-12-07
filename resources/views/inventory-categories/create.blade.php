@@ -49,6 +49,9 @@
                         <div class="form-group mt-2">
                             <label for="image">Image<span class="text-danger">*</span></label>
                             <input type="file" name="image" id="imageInput" class="form-control">
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group mt-2">
                             <img id="preview" src="#" class="mt-3" style="display:none;max-height: 200px;"/>

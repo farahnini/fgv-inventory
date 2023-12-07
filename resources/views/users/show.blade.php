@@ -13,17 +13,17 @@
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input id="name" type="text" class="form-control disabled" name="name" value="{{$user->name}}"s>
+                            <input id="name" type="text" class="form-control" name="name" value="{{$user->name}}" readonly>
                         </div>
 
                         <div class="form-group mt-2">
                             <label for="email">Email</label>
-                            <input id="email" type="email" class="form-control disabled" name="email" value="{{$user->email}}">        
+                            <input id="email" type="email" class="form-control" name="email" value="{{$user->email}}" readonly>        
                         </div>
 
                         <div class="form-group mt-2">
                             <label for="role">Role</label>
-                            <input id="role" class="form-control disabled" name="role" value="{{$user->role}}">
+                            <input id="role" class="form-control" name="role" value="{{$user->role}}" readonly>
                         </div>
 
                         <div class="form-group mt-3 text-right">

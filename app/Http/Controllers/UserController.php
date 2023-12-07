@@ -50,7 +50,7 @@ class UserController extends Controller
         ]);
 
 
-        // Create and save the user
+        // Create and save the user - POPO (Plain Old PHP Object)
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;

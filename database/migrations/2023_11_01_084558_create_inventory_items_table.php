@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('colour')->nullable();
             $table->string('reference_number')->nullable();
             $table->integer('quantity');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

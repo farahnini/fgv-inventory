@@ -47,5 +47,10 @@ class User extends Authenticatable
     {
         $this->attributes['name'] = ucwords($value);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
     
 }

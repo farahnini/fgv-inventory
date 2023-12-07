@@ -13,15 +13,15 @@
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" class="form-control" value="{{ $inventory_category->name }}" disabled>
+                            <input type="text" name="name" class="form-control" value="{{ $inventory_category->name }}" readonly>
                         </div>
                         <div class="form-group mt-2">
                             <label for="description">Description</label>
-                            <textarea name="description" class="form-control" value="{{ $inventory_category->description }}" disabled>{{ $inventory_category->description }}</textarea>
+                            <textarea name="description" class="form-control" value="{{ $inventory_category->description }}" readonly>{{ $inventory_category->description }}</textarea>
                         </div>
                         <div class="form-group mt-2">
                             <label for="image">Image</label>
-                            <input type="text" name="name" class="form-control"  value="{{ $inventory_category->image }}" disabled>
+                            <input type="text" name="name" class="form-control"  value="{{ $inventory_category->image }}" readonly>
 
                         </div>
                         <div class="form-group mt-2">
