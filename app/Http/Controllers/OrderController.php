@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\InventoryItem;
 use App\Notifications\OrderNotification;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -87,5 +88,13 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function generatePDF(Order $order)
+    {
+        // resources/views/orders/pdf.blade.php -> $order
+        $pdf = Pdf::loadView('orders.pdf', compact('order'))->setPaper('a4', 'landscape');
+
+        return $pdf->download('invoice.pdf');
     }
 }

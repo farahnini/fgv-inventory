@@ -27,6 +27,10 @@
                             value="{{ $order->created_at }}" disabled
                         >
                     </div>
+                    <br>
+                    <div class="form-group">
+                        <a href="{{ route('orders.generate-pdf', $order) }}" class="btn btn-success">Download PDF</a>
+                    </div>
                 </div>
             </div>
         </div>

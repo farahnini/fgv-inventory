@@ -49,3 +49,5 @@ Route::post('/inventory-items/create', [InventoryItemController::class, 'store']
 Route::get('/orders/create', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 Route::post('/orders/{order}', [OrderController::class, 'update'])->name('orders.update');
+// Routing to download PDF
+Route::get('/orders/{order}/generate-pdf', [OrderController::class, 'generatePDF'])->name('orders.generate-pdf');
