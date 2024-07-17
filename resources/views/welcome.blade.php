@@ -4,6 +4,21 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        <div class="card mt-3 p-1">
+                <div class="card-header">{{ __('Products On My Cart') }}</div>
+                <div class="row">
+                    @foreach ($cart_products as $product)
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $product['name'] }} x {{ $product['quantity'] }}</h5>
+                            </div>  
+                        </div>
+                    </div>
+                    @endforeach 
+                </div>
+            </div>
             <div class="card mt-3 p-1">
                 <div class="card-header">{{ __('Available Products') }}</div>
 
@@ -24,7 +39,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer">
-                                <form method="POST">
+                                <form method="POST" action="{{ route('carts.add', $available_item) }}">
                                     @csrf
                                     <div class="input-group">
                                         <div class="input-group-prepend">
