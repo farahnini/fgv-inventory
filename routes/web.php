@@ -33,7 +33,7 @@ Route::get('/', function () {
         }
     }
 
-    return view('welcome', compact('available_items', 'cart_products'));
+    return view('welcome', compact('available_items', 'cart_products', 'cart_total'));
 });
 
 Route::post('/carts/add/{available_item}', function (Request $request, InventoryItem $available_item) {
