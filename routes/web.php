@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\InventoryCategoryController;
 use App\Http\Controllers\InventoryItemController;
 use App\Http\Controllers\OrderController;
+use Illuminate\Http\Request;
+use App\Models\InventoryItem;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +21,50 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $available_items = \App\Models\InventoryItem::all();
+
+    $cart_products = collect(request()->session()->get('cart'));
+
+    $cart_total = 0;
+    if(session('cart')){
+        foreach ($cart_products as $key => $product) {
+            
+            $cart_total+= $product['quantity'];
+        }
+    }
+
+    return view('welcome', compact('available_items', 'cart_products', 'cart_total'));
 });
+
+Route::post('/carts/add/{available_item}', function (Request $request, InventoryItem $available_item) {
+
+    $item = $available_item;
+    $cart = session('cart', []);
+    
+    if(isset($cart[$item->id])) {
+        $cart[$item->id]['quantity'] = $cart[$item->id]['quantity'] + $request->quantity;
+    } else {
+        $cart[$item->id] = [
+            "name" => $item->name,
+            "quantity" => $request->quantity,
+            "image" => $item->image_url
+        ];
+    }
+
+    $request->session()->put('cart', $cart);
+
+
+    return redirect('/');
+})->name('carts.add');
+
+Route::get('clear-cart', function() {
+    session()->forget('cart');
+
+    return redirect('/');
+})->name('carts.clear');
+
+
+
 
 Auth::routes();
 
