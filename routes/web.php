@@ -19,7 +19,9 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $available_items = \App\Models\InventoryItem::all();
+
+    return view('welcome', compact('available_items'));
 });
 
 Auth::routes();
