@@ -40,6 +40,13 @@
                 </div>
             </div>
 
+            <div class="mt-3 form-group">
+                <a href="{{route('orders.generate-pdf',$order)}}" class="btn btn-success">
+                    <i class="fas fa-download mr-2"></i> Download PDF
+                </a>
+            </div>
+
+
             <div class="card mt-3 p-1">
                 <div class="card-header">{{ __('Order Items') }}</div>
 

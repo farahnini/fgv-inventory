@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\InventoryItem;
+use Http;
 
 class HomeController extends Controller
 {
@@ -26,6 +27,13 @@ class HomeController extends Controller
     public function index()
     {   
         $available_items = InventoryItem::all();
-        return view('home', compact('available_items'));
+
+         $complaints = null;
+
+        // query using http get
+        // $complaints = Http::get('https://staging.ecomplaint.tarsoft.my/api/v1/complaints')->object()->data;
+        // dd($complaint);
+
+        return view('home', compact('available_items', 'complaints'));
     }
 }

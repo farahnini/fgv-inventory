@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\InventoryItem;
 use App\Notifications\OrderNotification;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -87,5 +88,13 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function generatePDF(Order $order)
+    {
+        // resources/views/pdf/pdf.blade.php
+        $pdf = PDF::loadView('orders.pdf', compact('order'))->setPaper('a4', 'potrait');
+        // return pdf
+        return $pdf->download(auth()->user()->name.'_SECUREDOWNLOAD_'.$order->id.'-'.now().'.pdf');
     }
 }

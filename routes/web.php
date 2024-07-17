@@ -55,6 +55,8 @@ Route::get('/orders',[OrderController::class,'index'])->name('orders.index')->mi
 Route::get('/orders/create', [OrderController::class, 'store'])->name('orders.store')->middleware('auth');
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show')->middleware('auth');
 Route::post('/orders/{order}', [OrderController::class, 'update'])->name('orders.show')->middleware('auth');
+//Routing to download pdf
+Route::get('/orders/{order}/generate-pdf', [OrderController::class, 'generatePDF'])->name('orders.generate-pdf');
 
 // Route::get('/orders/{order}/edit', [OrderController::class, 'edit'])->name('orders.edit')->middleware('auth');
 // Route::post('/orders/{order}/edit', [OrderController::class, 'update'])->name('orders.update')->middleware('auth');
