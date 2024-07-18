@@ -8,6 +8,7 @@ use App\Http\Controllers\InventoryItemController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use App\Models\InventoryItem;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,3 +96,5 @@ Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.sh
 Route::post('/orders/{order}', [OrderController::class, 'update'])->name('orders.update');
 // Routing to download PDF
 Route::get('/orders/{order}/generate-pdf', [OrderController::class, 'generatePDF'])->name('orders.generate-pdf');
+
+Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');

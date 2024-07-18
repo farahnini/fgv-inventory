@@ -76,7 +76,7 @@
                                         <a class="dropdown-item">{{ $notification->data['message'] }}</a>
                                     @endforeach
                                     <hr>
-                                    <a class="dropdown-item text-center" href="">View All Notification</a>
+                                    <a class="dropdown-item text-center" href="{{ route('notifications.index') }}">View All Notification</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">

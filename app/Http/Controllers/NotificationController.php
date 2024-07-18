@@ -12,7 +12,12 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        //
+        // query all notifications
+        $notifications = auth()->user()->notifications;
+
+        // return to view
+        // resources/views/notifications/index.blade.php + $notifications
+        return view('notifications.index', compact('notifications'));
     }
 
     /**
