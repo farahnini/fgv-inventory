@@ -83,6 +83,8 @@ class InventoryCategoryController extends Controller
      */
     public function edit(InventoryCategory $inventory_category)
     {
+        $this->authorize('update', $inventory_category);
+
          return view('inventory-categories.edit',compact('inventory_category'));
     }
     
@@ -92,6 +94,8 @@ class InventoryCategoryController extends Controller
      */
     public function update(Request $request, InventoryCategory $inventory_category)
     {
+        $this->authorize('update', $inventory_category);
+
         // Validate the incoming data for updating
         $validator = $request->validate([
             'name' => 'required|string|max:255',
