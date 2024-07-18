@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class StoreItemNotification extends Notification
+class StoreItemNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     public $details;
@@ -27,7 +27,7 @@ class StoreItemNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['database'];
+        return ['database','mail'];
     }
 
     /**
