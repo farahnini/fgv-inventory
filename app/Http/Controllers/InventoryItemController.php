@@ -8,6 +8,8 @@ use App\Models\InventoryCategory;
 use Illuminate\Http\Request;
 use File;
 use Storage;
+use Notification;
+use App\Notifications\StoreItemNotification;
 
 class InventoryItemController extends Controller
 {
@@ -63,6 +65,11 @@ class InventoryItemController extends Controller
         }
 
         // send notification
+        $details = [
+            'message' => 'A new item '. $inventory_item->name .' has been added to the inventory.'
+        ];
+
+        Notification::send(auth()->user(), new StoreItemNotification($details));
 
         // return to index
         return redirect()->route('inventory-items.index');
