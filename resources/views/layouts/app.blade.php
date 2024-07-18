@@ -69,11 +69,14 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Notifications <i class="fa-solid fa-bell"></i>
+                                    <span class="badge badge-danger position-absolute translate-middle p-1 bg-danger border border-light rounded-circle" style="top: 10%; right: 10%; font-size: 0.75em;">{{ auth()->user()->unreadNotifications()->count() }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @foreach(auth()->user()->notifications as $notification)
                                         <a class="dropdown-item">{{ $notification->data['message'] }}</a>
                                     @endforeach
+                                    <hr>
+                                    <a class="dropdown-item text-center" href="">View All Notification</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
