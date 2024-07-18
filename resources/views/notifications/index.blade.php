@@ -18,6 +18,7 @@
                             <tr>
                                 <th>Message</th>
                                 <th>Created at</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,6 +26,13 @@
                                 <tr>
                                     <td>{{ $notification->data['message'] }}</td>
                                     <td>{{ $notification->created_at->diffForHumans() }}</td>
+                                    <td>
+                                        @if($notification->read_at == null)
+                                            <a href="{{ route('notifications.mark-as-read', $notification) }}" class="btn btn-primary">Mark As Read</a>
+                                        @else
+                                            <a href="" class="btn btn-light">Read at {{ $notification->read_at }}</a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

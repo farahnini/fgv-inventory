@@ -72,7 +72,7 @@
                                     <span class="badge badge-danger position-absolute translate-middle p-1 bg-danger border border-light rounded-circle" style="top: 10%; right: 10%; font-size: 0.75em;">{{ auth()->user()->unreadNotifications()->count() }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @foreach(auth()->user()->notifications as $notification)
+                                    @foreach(auth()->user()->unreadNotifications as $notification)
                                         <a class="dropdown-item">{{ $notification->data['message'] }}</a>
                                     @endforeach
                                     <hr>
