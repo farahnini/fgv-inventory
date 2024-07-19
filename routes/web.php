@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use App\Models\InventoryItem;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,3 +100,7 @@ Route::get('/orders/{order}/generate-pdf', [OrderController::class, 'generatePDF
 
 Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
 Route::get('/notifications/{notification}/mark-as-read', [NotificationController::class, 'markAsRead'])->name('notifications.mark-as-read');
+
+Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+Route::post('/tasks/create', [TaskController::class, 'store'])->name('tasks.store');

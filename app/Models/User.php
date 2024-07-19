@@ -51,5 +51,9 @@ class User extends Authenticatable implements Auditable
     {
         $this->attributes['name'] = ucwords($value);
     }
-    
+
+    public function tasks()
+    {
+        return $this->belongsToMany(Task::class);
+    }
 }
