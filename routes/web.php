@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\InventoryItem;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,3 +105,7 @@ Route::get('/notifications/{notification}/mark-as-read', [NotificationController
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
 Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
 Route::post('/tasks/create', [TaskController::class, 'store'])->name('tasks.store');
+
+Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
+Route::get('/roles/create', [RoleController::class, 'create'])->name('roles.create');
+Route::post('/roles/create', [RoleController::class, 'store'])->name('roles.store');
