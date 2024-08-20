@@ -1,6 +1,6 @@
 ## Freshly Install
 
-1. git clone git@github.com:farahnini/fgv-inventory.git
+1. git clone https://github.com/farahnini/fgv-inventory.git
 2. composer install
 3. cp .env.example .env
 4. php artisan key:generate
