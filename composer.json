@@ -14,6 +14,7 @@
         "laravel/ui": "^4.2",
         "owen-it/laravel-auditing": "^13.5",
         "php-flasher/flasher-laravel": "^1.15",
+        "spatie/laravel-permission": "^6.9",
         "yadahan/laravel-authentication-log": "^1.6"
     },
     "require-dev": {
