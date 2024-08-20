@@ -8,6 +8,8 @@ use App\Models\InventoryCategory;
 use Illuminate\Http\Request;
 use File;
 use Storage;
+use App\Notifications\StoreItemNotification;
+use Illuminate\Support\Facades\Notification;
 
 class InventoryItemController extends Controller
 {
@@ -62,7 +64,9 @@ class InventoryItemController extends Controller
             $inventory_item->update(['image' => $filename]);
         }
 
-        // send notification
+        $details = ['message' => 'SUCCESS!! Item '. $inventory_item->name.' has been created successfully'];
+
+        Notification::send(auth()->user(), new StoreItemNotification($details));
 
         // return to index
         return redirect()->route('inventory-items.index');

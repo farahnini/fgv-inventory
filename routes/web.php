@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\InventoryCategoryController;
 use App\Http\Controllers\InventoryItemController;
 use App\Http\Controllers\OrderController;
@@ -95,3 +96,19 @@ Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.sh
 Route::post('/orders/{order}', [OrderController::class, 'update'])->name('orders.update');
 // Routing to download PDF
 Route::get('/orders/{order}/generate-pdf', [OrderController::class, 'generatePDF'])->name('orders.generate-pdf');
+
+
+Route::get('/Notifications',[NotificationController::class,'index'])->name('notifications.index');
+
+//Route mark as read
+Route::post('/Notifications/{notification}/mark-as-read',[NotificationController::class,'markAsRead'])->name('notifications.mark-as-read');
+
+Route::post('/clear-notifications', function () {
+    // Logic to clear notifications for the authenticated user
+    auth()->user()->notifications()->delete();
+
+    return redirect()->back()->with('success', 'Notifications cleared successfully.');
+})->name('notifications.clear');
+
+
+Route::get('/Tasks',[taskController::class,'index'])->name('tasks.index');

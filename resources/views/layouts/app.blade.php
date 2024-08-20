@@ -66,6 +66,49 @@
                                 </li>
                             @endif
                         @else
+                        <!-- Notification Bell -->
+                            <li class="nav-item dropdown">
+                                <a id="navbarNotification" class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-bell" style="font-size: 1.5em;"></i>
+                                    @if(auth()->user()->unreadNotifications->count()> 0)
+                                    <span class="badge badge-danger position-absolute translate-middle p-1 bg-danger border border-light rounded-circle" style="top: 10%; right: 10%; font-size: 0.75em;">{{ auth()->user()->notifications->count()}}</span>
+                                    @endif
+                                </a>
+
+                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarNotification" style="min-width: 300px;">
+                                    <!-- Display notifications based on current user -->
+                                    @forelse(auth()->user()->unreadNotifications->take(5) as $notification)
+                                        <a class="dropdown-item" href="#">
+                                            {{ $notification->data['message'] }}<small class="text-muted"> {{ $notification->created_at->diffForHumans() }}</small>
+                                        </a>
+                                        @if(!$loop->last)
+                                            <div class="dropdown-divider"></div>
+                                        @endif
+                                    @empty
+                                        <div class="dropdown-item text-center">
+                                            No new notifications
+                                            <br><img src="/images/happy.gif" alt="Happy Animation" class="mt-2" style="width: 80px;">
+                                        </div>
+                                    @endforelse
+
+
+                                    <div class="text-center">
+                                        <a href="{{ route('notifications.index') }}" class="btn btn-secondary btn-sm">
+                                            View All Notifications ({{ auth()->user()->notifications->count() }})
+                                        </a>
+                                    </div>
+
+
+                                    <!-- Clear Notifications Button -->
+                                    @if(auth()->user()->notifications->count() > 0)
+                                        <div class="dropdown-divider"></div>
+                                        <form method="POST" action="{{ route('notifications.clear') }}" class="d-flex justify-content-end align-items-center mt-2">
+                                            @csrf
+                                            <button type="submit" class="btn btn-link text-danger p-0" style="font-size: 0.9em; text-decoration: none; color: #dc3545;">Clear Notifications  </button>                                
+                                        </form>
+                                    @endif
+                                </div>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -101,4 +144,18 @@
     </div>
 
 </body>
+
+<style>
+    .badge-danger {
+        background-color: #dc3545;
+        color: white;
+        border-radius: 50%;
+        padding: 0.5em;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 0.8em;
+    }
+</style>
+
 </html>

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\InventoryCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use App\Notifications\StoreCategoryItemNotification;
+use App\Notifications\UpdateCategoryItemNotification;
+use App\Notifications\DeleteCategoryItemNotification;
+use Illuminate\Support\Facades\Notification;
 
 class InventoryCategoryController extends Controller
 {
@@ -66,6 +70,12 @@ class InventoryCategoryController extends Controller
         // Save the Inventory Category
         $inventoryCategory->save();
 
+        $details = ['message' => 'SUCCESS!! Category '. $inventoryCategory->name.' has been created successfully'];
+
+        Notification::send(auth()->user(), new StoreCategoryItemNotification($details));
+
+
+
         // Redirect to the users index page with a success message
         return redirect()->route('inventory-categories.index')->with('success');
     }
@@ -82,8 +92,9 @@ class InventoryCategoryController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(InventoryCategory $inventory_category)
-    {
-         return view('inventory-categories.edit',compact('inventory_category'));
+    {   
+        $this->authorize('update',$inventory_category);
+        return view('inventory-categories.edit',compact('inventory_category'));
     }
     
 
@@ -119,6 +130,10 @@ class InventoryCategoryController extends Controller
         $inventory_category->description = $request->input('description');
         $inventory_category->save();
 
+        $details = ['message' => 'SUCCESS!! Category '. $inventory_category->name.' has been updated successfully'];
+
+        Notification::send(auth()->user(), new UpdateCategoryItemNotification($details));
+
         flash()->addSuccess('Category updated successfully');
 
         // Redirect to the inventory categories index page with a success message
@@ -134,6 +149,8 @@ class InventoryCategoryController extends Controller
             // Get the image file name
             $imageFileName = $inventory_category->image;
 
+            $inventoryCategoryName =  $inventory_category->name;
+
             // Delete the inventory category record from the database
             $inventory_category->delete();
 
@@ -143,6 +160,10 @@ class InventoryCategoryController extends Controller
             if (File::exists($imagePath)) {
                 File::delete($imagePath);
             }
+
+             $details = ['message' => 'SUCCESS!! Category '. $inventoryCategoryName.' has been deleted successfully'];
+
+             Notification::send(auth()->user(), new DeleteCategoryItemNotification($details));
 
             flash()->addSuccess('Category deleted successfully');
         } catch (\Exception $e) {

@@ -92,9 +92,11 @@
                                         <a href="{{ route('inventory-categories.show', $inventory_category->id) }}" class="btn btn-sm btn-primary" style="margin-right:2px;">
                                             <i class="fas fa-eye"></i>
                                         </a>
+                                        @can('update',$inventory_category)
                                         <a href="{{ route('inventory-categories.edit', $inventory_category->id) }}" class="btn btn-sm btn-success" style="margin-right:2px;">
                                             <i class="fas fa-edit"></i> 
                                         </a>
+                                        @endcan
                                         <a href="{{ route('inventory-categories.delete', $inventory_category->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>

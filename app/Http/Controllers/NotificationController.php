@@ -5,14 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 
-class NotificationController extends Controller
+
+class NotificationController extends Controller 
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $notifications = auth()->user()->notifications;
+
+        return view('notifications.index', compact('notifications'));
+    }
+
+    public function markAsRead($notification)
+    {   
+        $notification = auth()->user()->notifications()->where('id',$notification)->first();
+        $notification->markAsRead();
+        return redirect()->back();
     }
 
     /**
