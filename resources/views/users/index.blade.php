@@ -68,6 +68,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Level</th>
                                     <th>Role</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
@@ -81,6 +82,7 @@
                                         <td style="white-space: nowrap;">{{ $user->name }}</td>
                                         <td style="white-space: nowrap;">{{ $user->email }}</td>
                                         <td>{{ $user->role }}</td>
+                                        <td>{{ $user->roles->implode('name', ', ') }}</td>
                                         <td>{{ $user->created_at }}</td>
                                         <td>{{ $user->updated_at }}</td>
                                         <td style="white-space: nowrap;">

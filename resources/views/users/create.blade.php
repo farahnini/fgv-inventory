@@ -30,10 +30,23 @@
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="role">Role<span class="text-danger">*</span></label>
+                            <label for="role">Level<span class="text-danger">*</span></label>
                             <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" required>
                                 <option value="Admin">Admin</option>
                                 <option value="Staff">Staff</option>
+                            </select>
+                            <small class="form-text text-muted">Select your role</small>
+                            @error('role')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="role">Spatie Role<span class="text-danger">*</span></label>
+                            <select id="role" class="form-control @error('role') is-invalid @enderror" name="spatie_role" required multiple>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                @endforeach
                             </select>
                             <small class="form-text text-muted">Select your role</small>
                             @error('role')

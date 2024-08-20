@@ -6,7 +6,7 @@ use \App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
-
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -34,7 +34,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $roles = Role::all();
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -66,6 +67,9 @@ class UserController extends Controller
         $user->password = bcrypt('test123');
 
         $user->save();
+
+        // Assign the user role
+        $user->assignRole($request->spatie_role);
 
         flash()->addSuccess('User created successfully');
 
