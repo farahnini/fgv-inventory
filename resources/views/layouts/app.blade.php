@@ -34,21 +34,27 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    @can('user-list')
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">User</a>
                         </li>
                     </ul>
+                    @endcan
+                    @can('category-list')
                     <ul class="navbar-nav ">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('inventory-categories.index') }}">Category</a>
                         </li>
                     </ul>
+                    @endcan
+                    @can('item-list')
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('inventory-items.index') }}">Item</a>
                         </li>
                     </ul>
+                    @endcan
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
