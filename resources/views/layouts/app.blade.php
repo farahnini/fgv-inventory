@@ -56,6 +56,14 @@
                     </ul>
                     @endcan
 
+                    @can('role-list')
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('roles.index') }}">Roles</a>
+                        </li>
+                    </ul>
+                    @endcan
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
