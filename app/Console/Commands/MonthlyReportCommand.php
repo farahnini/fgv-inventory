@@ -39,7 +39,7 @@ class MonthlyReportCommand extends Command
 
         Mail::send([], [], function($message) use ($emailContent) {
             $message->to('farah.o@fgvholdings.com')
-                    ->subject('Monthly Report'.now())
+                    ->subject('Monthly Report '.now())
                     ->html($emailContent); // Use the html method to set the email content
         });
 
