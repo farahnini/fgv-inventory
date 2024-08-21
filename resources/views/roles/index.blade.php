@@ -20,34 +20,31 @@
             {
                 extend: 'csv',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4],
+                    columns: [0, 1, 2, 3, 4, 5],
                 },
             },
             {
                 extend: 'excel',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4],
+                    columns: [0, 1, 2, 3, 4, 5],
                 },
             },
             {
                 extend: 'pdf',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4],
+                    columns: [0, 1, 2, 3, 4, 5],
                 },
             },
             {
                 extend: 'print',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4],
+                    columns: [0, 1, 2, 3, 4, 5],
                 },
             },
         ],
     });
 });
-
-
 </script>
-
 
 <div class="container">
     <div class="row justify-content-center">
@@ -55,10 +52,8 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <span>{{ __('Users Index') }}</span>
-                        @can('user-create')
-                        <a href="{{ route('users.create') }}" class="btn btn-primary">+ User</a>
-                        @endcan
+                        <span>{{ __('Roles Index') }}</span>
+                        <a href="{{ route('roles.create') }}" class="btn btn-primary">+ Role</a>
                     </div>
                 </div>
 
@@ -69,39 +64,28 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Level</th>
-                                    <th>Role</th>
+                                    <th>Permissions</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
-                                    <th>Operation</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($roles as $role)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
-                                        <td style="white-space: nowrap;">{{ $user->name }}</td>
-                                        <td style="white-space: nowrap;">{{ $user->email }}</td>
-                                        <td>{{ $user->role }}</td>
-                                        <td>{{ $user->roles->implode('name', ', ') }}</td>
-                                        <td>{{ $user->created_at }}</td>
-                                        <td>{{ $user->updated_at }}</td>
+                                        <td style="white-space: nowrap;">{{ $role->name }}</td>
+                                        <td>{{ $role->permissions->implode('name', ', ') }}</td>
+                                        <td style="white-space: nowrap;">{{ $role->created_at }}</td>
+                                        <td style="white-space: nowrap;">{{ $role->updated_at }}</td>
                                         <td style="white-space: nowrap;">
-                                            <a href="{{ route('users.show', $user) }}" class="btn btn-sm btn-primary" style="margin-right:2px;">
+                                            <!-- show -->
+                                            <a href="{{ route('roles.show', $role->id) }}" class="btn btn-sm btn-success mr-2" style="margin-right:2px;">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            @can('user-edit')
-                                            <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-success" style="margin-right:2px;">
-                                                <i class="fas fa-edit"></i> 
+                                            <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-edit"></i>
                                             </a>
-                                            @endcan
-
-                                            @can('user-delete')
-                                            <a href="{{ route('users.delete', $user) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
@@ -113,8 +97,5 @@
         </div>
     </div>
 </div>
-
-
-
 
 @endsection

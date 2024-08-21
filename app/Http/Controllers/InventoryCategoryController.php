@@ -7,7 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class InventoryCategoryController extends Controller
-{
+{   
+    function __construct()
+    {   
+        $this->middleware(['permission:category-list|category-create|category-edit|category-delete'], ['only' => ['index']]);
+        $this->middleware(['permission:category-create'], ['only' => ['create', 'store']]);
+        $this->middleware(['permission:category-edit'], ['only' => ['edit', 'update']]);
+        $this->middleware(['permission:category-delete'], ['only' => ['delete']]);
+    }
+
     /**
      * Display a listing of the resource.
      */

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -28,7 +30,9 @@
 
                         <div class="form-group mt-3 text-right">
                             <a href="{{ route('users.index') }}" class="btn btn-secondary" style="margin-right: 4px;">Back</a>
+                            @can('user-edit')
                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning" style="margin-right: 4px;">Update</a>
+                            @endcan
                         </div>
                     </form>
                 </div>

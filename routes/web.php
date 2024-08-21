@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Models\InventoryItem;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,8 +68,6 @@ Route::get('clear-cart', function() {
 })->name('carts.clear');
 
 
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -104,3 +104,13 @@ Route::get('/notifications/{notification}/mark-as-read', [NotificationController
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
 Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
 Route::post('/tasks/create', [TaskController::class, 'store'])->name('tasks.store');
+
+Route::get('/roles',[RoleController::class,'index'])->name('roles.index');
+Route::get('/roles/create',[RoleController::class,'create'])->name('roles.create');
+Route::post('/roles/create',[RoleController::class,'store'])->name('roles.store');
+Route::get('/roles/{role}',[RoleController::class,'show'])->name('roles.show');
+Route::get('/roles/{role}/edit',[RoleController::class,'edit'])->name('roles.edit');
+Route::post('/roles/{role}/edit',[RoleController::class,'update'])->name('roles.update');
+
+// Permissions
+Route::get('/permissions',[PermissionController::class,'index'])->name('permissions.index');

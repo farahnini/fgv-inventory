@@ -8,11 +8,20 @@ use App\Models\InventoryCategory;
 use Illuminate\Http\Request;
 use File;
 use Storage;
-use Notification;
+use Notification;\
 use App\Notifications\StoreItemNotification;
 
 class InventoryItemController extends Controller
-{
+{   
+
+     function __construct()
+    {   
+        $this->middleware(['permission:item-list|item-create|item-edit|item-delete'], ['only' => ['index']]);
+        $this->middleware(['permission:item-create'], ['only' => ['create', 'store']]);
+        $this->middleware(['permission:item-edit'], ['only' => ['edit', 'update']]);
+        $this->middleware(['permission:item-delete'], ['only' => ['delete']]);
+    }
+
     /**
      * Display a listing of the resource.
      */

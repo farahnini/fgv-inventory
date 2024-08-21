@@ -41,6 +41,18 @@
                         </li>
                     </ul>
                     @endcan
+                    @can('role-list')
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('roles.index') }}">Role</a>
+                        </li>
+                    </ul>
+                    @endcan
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('permissions.index') }}">Permission</a>
+                        </li>
+                    </ul>
                     @can('category-list')
                     <ul class="navbar-nav ">
                         <li class="nav-item">
