@@ -76,10 +76,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/users',[UserController::class,'index'])->name('users.index')->middleware('auth');
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create')->middleware('auth');
 Route::post('/users/create', [UserController::class, 'store'])->name('users.store')->middleware('auth');
-Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
-Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
-Route::post('/users/{user}/edit', [UserController::class, 'update'])->name('users.update')->middleware('auth');
-Route::get('/users/{user}/delete',[UserController::class,'delete'])->name('users.delete')->middleware('auth');
+Route::get('/users/{user:uuid}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
+Route::get('/users/{user:uuid}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
+Route::post('/users/{user:uuid}/edit', [UserController::class, 'update'])->name('users.update')->middleware('auth');
+Route::get('/users/{user:uuid}/delete',[UserController::class,'delete'])->name('users.delete')->middleware('auth');
 
 Route::get('/inventory-categories',[InventoryCategoryController::class,'index'])->name('inventory-categories.index')->middleware('auth');
 Route::get('/inventory-categories/create', [InventoryCategoryController::class, 'create'])->name('inventory-categories.create')->middleware('auth');
