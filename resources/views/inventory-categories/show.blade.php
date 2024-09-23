@@ -24,8 +24,15 @@
                             <input type="text" name="name" class="form-control"  value="{{ $inventory_category->image }}" disabled>
 
                         </div>
+                        
                         <div class="form-group mt-2">
                             <img id="preview" src="{{ asset('images/' . $inventory_category->image) }}" class="mt-3" style="max-height: 200px;">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="image">Second Images</label>
+                            @foreach($inventory_category->getMedia('images') as $media)
+                                <img src="{{ $media->getUrl() }}" class="mt-3" style="max-height: 200px;">
+                            @endforeach
                         </div>
                          <div class="form-group mt-3 text-right">
                             <a href="{{ route('inventory-categories.index') }}" class="btn btn-secondary" style="margin-right: 4px;">Back</a>

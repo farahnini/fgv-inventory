@@ -26,7 +26,7 @@
                 <div class="card-header">{{ __('Inventory Category') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data" class="dropzone" id="my-awesome-dropzone">
                         @csrf
 
                         <div class="form-group">
@@ -49,6 +49,15 @@
                             <label for="image">Image</label>
                             <input type="file" name="image" id="imageInput" class="form-control">
                             <p>Current Image: {{ $inventory_category->image }}</p>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="image">Second Image</label>
+                            <input type="file" name="second_image"  class="form-control">
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="image">Second Image</label>
+                            <input type="file" name="file"  class="form-control">
                         </div>
                         <div class="form-group mt-2">
                             <img id="preview" src="{{ asset('images/' . $inventory_category->image) }}" class="mt-3" style="max-height: 200px;">

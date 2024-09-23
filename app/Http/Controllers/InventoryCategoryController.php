@@ -118,6 +118,11 @@ class InventoryCategoryController extends Controller
             $inventory_category->image = $imageName; // Update the image filename in the database
         }
 
+        if($request->hasFile('second_image')){
+            $inventory_category->addMedia($request->file('second_image'))
+                            ->toMediaCollection('images');
+        }
+
         // Update the Inventory Category with the new data
         $inventory_category->name = $request->input('name');
         $inventory_category->description = $request->input('description');
