@@ -63,6 +63,16 @@
                                     </a>
                                 @endif
                             </div>
+                            <div class="col-md-8 offset-md-4 mt-4">
+                                <a href="{{ route('google.redirect') }}" class="btn btn-secondary">
+                                    {{ __('Login with Google') }}
+                                </a>
+                            </div>
+                            <div class="col-md-8 offset-md-4 mt-4">
+                                <a href="{{ route('hrms.redirect') }}" class="btn btn-secondary">
+                                    {{ __('Login with HRMS') }}
+                                </a>
+                            </div>
                         </div>
                     </form>
                 </div>

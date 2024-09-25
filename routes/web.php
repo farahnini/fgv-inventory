@@ -71,6 +71,12 @@ Route::get('clear-cart', function() {
 
 Auth::routes();
 
+Route::get('/auth/google/redirect', [App\Http\Controllers\SSO\GoogleController::class, 'redirect'])->name('google.redirect');
+Route::get('/auth/google/callback', [App\Http\Controllers\SSO\GoogleController::class, 'callback'])->name('google.callback');
+
+Route::get('/auth/hrms/redirect', [App\Http\Controllers\SSO\HRMSController::class, 'redirect'])->name('hrms.redirect');
+Route::get('/auth/hrms/callback', [App\Http\Controllers\SSO\HRMSController::class, 'callback'])->name('hrms.callback');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/users',[UserController::class,'index'])->name('users.index')->middleware('auth');
