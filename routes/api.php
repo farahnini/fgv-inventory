@@ -22,7 +22,7 @@ Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login'])
 Route::get('/profile', [App\Http\Controllers\API\AuthController::class, 'profile'])->middleware('auth:api');
 Route::get('/logout', [App\Http\Controllers\API\AuthController::class, 'logout'])->middleware('auth:api');
 
-// notifications index
-// notification show
-// notification delete
-// notifications delete all
+Route::get('/notifications', [App\Http\Controllers\API\NotificationController::class, 'index'])->middleware('auth:api');
+Route::get('/notifications/{notification}', [App\Http\Controllers\API\NotificationController::class, 'show'])->middleware('auth:api');
+Route::get('/notifications/{notification}/delete', [App\Http\Controllers\API\NotificationController::class, 'destroy'])->middleware('auth:api');
+Route::get('/notifications/delete/all', [App\Http\Controllers\API\NotificationController::class, 'destroyAll'])->middleware('auth:api');
