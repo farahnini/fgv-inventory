@@ -56,6 +56,7 @@ class InventoryCategoryController extends Controller
         }
 
         // Create a new Inventory Category
+        // Plain Old PHP Object (POPO)
         $inventoryCategory = new InventoryCategory();
         $inventoryCategory->name = $request->input('name');
         $inventoryCategory->description = $request->input('description');

@@ -28,3 +28,4 @@ Route::get('/notifications/{notification}/delete', [App\Http\Controllers\API\Not
 Route::get('/notifications/delete/all', [App\Http\Controllers\API\NotificationController::class, 'destroyAll'])->middleware('auth:api');
 
 Route::get('/inventory-categories', [App\Http\Controllers\API\InventoryCategoryController::class, 'index'])->middleware('auth:api');
+Route::post('/inventory-categories', [App\Http\Controllers\API\InventoryCategoryController::class, 'store'])->middleware('auth:api');

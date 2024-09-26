@@ -12,6 +12,8 @@ class InventoryCategory extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
 
+    protected $fillable = ['name', 'description']; // mass assignment
+
     public function inventoryItems()
     {
         return $this->hasMany(InventoryItem::class, 'category_id');
