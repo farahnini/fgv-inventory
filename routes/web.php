@@ -74,8 +74,8 @@ Auth::routes();
 Route::get('/auth/google/redirect', [App\Http\Controllers\SSO\GoogleController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [App\Http\Controllers\SSO\GoogleController::class, 'callback'])->name('google.callback');
 
-Route::get('/auth/hrms/redirect', [App\Http\Controllers\SSO\HRMSController::class, 'redirect'])->name('hrms.redirect');
-Route::get('/auth/hrms/callback', [App\Http\Controllers\SSO\HRMSController::class, 'callback'])->name('hrms.callback');
+Route::get('/auth/tarsofthrms/redirect', [App\Http\Controllers\SSO\HRMSController::class, 'redirect'])->name('hrms.redirect');
+Route::get('/auth/tarsofthrms/callback', [App\Http\Controllers\SSO\HRMSController::class, 'callback'])->name('hrms.callback');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

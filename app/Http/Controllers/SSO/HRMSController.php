@@ -34,17 +34,17 @@ class HRMSController extends Controller
             'code' => $request->code,
         ]);
 
-    if ($response->status() == '200') {
-  
-        $response = Http::withToken($response->object()->access_token)->get(config('services.hrms.url').'/api/user');
         if ($response->status() == '200') {
-            
-            $user = User::where('email', $response->object()->email)->first();  
-            if(!$user){
+    
+            $response = Http::withToken($response->object()->access_token)->get(config('services.hrms.url').'/api/user');
+            if ($response->status() == '200') {
+
                 $random_password = Str::random(8);
-                $user = User::create([
+
+                $user = User::updateOrCreate([
+                    'email' => $response->object()->email
+                ],[
                     'name' => $response->object()->name,
-                    'email' => $response->object()->email,
                     'password' => Hash::make($random_password),
                 ]);
             } 
@@ -52,8 +52,7 @@ class HRMSController extends Controller
             Auth::login($user);
             return redirect()->to('/home');
         } 
-    }
-
-    return redirect('/login');
+      
+        return redirect('/login');
     }
 }
