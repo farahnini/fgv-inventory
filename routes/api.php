@@ -26,3 +26,5 @@ Route::get('/notifications', [App\Http\Controllers\API\NotificationController::c
 Route::get('/notifications/{notification}', [App\Http\Controllers\API\NotificationController::class, 'show'])->middleware('auth:api');
 Route::get('/notifications/{notification}/delete', [App\Http\Controllers\API\NotificationController::class, 'destroy'])->middleware('auth:api');
 Route::get('/notifications/delete/all', [App\Http\Controllers\API\NotificationController::class, 'destroyAll'])->middleware('auth:api');
+
+Route::get('/inventory-categories', [App\Http\Controllers\API\InventoryCategoryController::class, 'index'])->middleware('auth:api');
