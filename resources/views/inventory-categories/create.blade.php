@@ -53,6 +53,10 @@
                         <div class="form-group mt-2">
                             <img id="preview" src="#" class="mt-3" style="display:none;max-height: 200px;"/>
                         </div>
+                        <div class="form-group mt-2">
+                            <label for="images">Images<span class="text-danger">*</span></label>
+                            <input type="file" name="images[]" id="imagesInput" class="form-control" multiple>
+                        </div>
                         <div class="form-group mt-3 text-right">
                             <a href="{{ route('inventory-categories.index') }}" class="btn btn-secondary" style="margin-right: 4px;">Back</a>
                             <button type="reset" class="btn btn-warning" style="margin-right:4px;">Reset</button>

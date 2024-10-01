@@ -27,6 +27,13 @@
                         <div class="form-group mt-2">
                             <img id="preview" src="{{ asset('images/' . $inventory_category->image) }}" class="mt-3" style="max-height: 200px;">
                         </div>
+
+                        <div class="form-group mt-2">
+                            <label for="image">Multiple Images</label><br>
+                            @foreach($inventory_category->getMedia('category_images') as $media)
+                                <img src="{{ $media->getUrl() }}" class="mt-3" style="max-height: 200px">
+                            @endforeach
+                        </div>
                          <div class="form-group mt-3 text-right">
                             <a href="{{ route('inventory-categories.index') }}" class="btn btn-secondary" style="margin-right: 4px;">Back</a>
                             <a href="{{ route('inventory-categories.edit', $inventory_category->id) }}" class="btn btn-warning" style="margin-right: 4px;">Update</a>

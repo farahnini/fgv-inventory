@@ -31,4 +31,27 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    // google
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT','/oauth/google/callback'),
+    ],
+
+    // github
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_REDIRECT','/oauth/github/callback'),
+    ],
+
+    // hrms
+    'hrms' => [
+        'client_id' => env('HRMS_CLIENT_ID'),
+        'client_secret' => env('HRMS_CLIENT_SECRET'),
+        'redirect' => env('HRMS_REDIRECT'),
+        'url' => env('HRMS_URL'),
+    ],
+
+
 ];

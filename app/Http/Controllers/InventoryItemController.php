@@ -8,7 +8,7 @@ use App\Models\InventoryCategory;
 use Illuminate\Http\Request;
 use File;
 use Storage;
-use Notification;\
+use Notification;
 use App\Notifications\StoreItemNotification;
 
 class InventoryItemController extends Controller

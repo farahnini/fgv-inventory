@@ -69,6 +69,16 @@ class InventoryCategoryController extends Controller
         $inventoryCategory->description = $request->input('description');
         $inventoryCategory->image = $imageName; // Store the image filename in the database
 
+
+        if ($request->hasFile('images')) {
+            // store multiple images using spatie
+            $inventoryCategory->addMultipleMediaFromRequest(['images'])
+                            ->each(function ($fileAdder) {
+                                $fileAdder->toMediaCollection('category_images');
+                            });
+        }
+
+
         flash()->addSuccess('Category registered successfully');
 
         // Save the Inventory Category

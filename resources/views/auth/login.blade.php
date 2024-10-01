@@ -64,6 +64,35 @@
                                 @endif
                             </div>
                         </div>
+
+                        <!-- Login with Google -->
+                        <div class="row mt-3">
+                            <div class="col-md-8 offset-md-4">
+                                <a href="{{ route('google.redirect') }}" class="btn btn-danger">
+                                    <i class="fab fa-google"></i> {{ __('Login with Google') }}
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Login with github -->
+                        <div class="row mt-3">
+                            <div class="col-md-8 offset-md-4">
+                                <a href="{{ route('github.redirect') }}" class="btn btn-dark">
+                                    <i class="fab fa-github"></i> {{ __('Login with Github') }}
+                                </a>
+                            </div>
+                        </div>
+
+                         <div class="row mt-3">
+                            <div class="col-md-8 offset-md-4">
+                                <a href="{{ route('hrms.redirect') }}" class="btn btn-primary">
+                                        <i class="fab fa-user"></i> {{ __('Login with HRMS') }}
+                                </a>
+                            </div>
+                        </div>
+
+                        
+
                     </form>
                 </div>
             </div>

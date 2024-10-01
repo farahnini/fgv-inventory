@@ -17,3 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Auth
+Route::post('/login',[App\Http\Controllers\API\AuthController::class,'login']);
+Route::get('/profile',[App\Http\Controllers\API\AuthController::class,'profile'])->middleware('auth:api');
+Route::get('/logout',[App\Http\Controllers\API\AuthController::class,'logout'])->middleware('auth:api');
+
+// Notification 
+Route::get('/notifications',[App\Http\Controllers\API\NotificationController::class,'index'])->middleware('auth:api');
+Route::get('/notifications/{notification}',[App\Http\Controllers\API\NotificationController::class,'show'])->middleware('auth:api');
+Route::get('/notifications/{notification}/delete',[App\Http\Controllers\API\NotificationController::class,'delete'])->middleware('auth:api');
+Route::get('/notifications/delete/all',[App\Http\Controllers\API\NotificationController::class,'deleteAll'])->middleware('auth:api');
+
+// InventoryCategory
+Route::get('/inventory-categories',[App\Http\Controllers\API\InventoryCategoryController::class,'index'])->middleware('auth:api');
+Route::get('/inventory-categories/{inventory_category}',[App\Http\Controllers\API\InventoryCategoryController::class,'show'])->middleware('auth:api');
+Route::post('/inventory-categories',[App\Http\Controllers\API\InventoryCategoryController::class,'store'])->middleware('auth:api');
+Route::put('/inventory-categories/{inventory_category}',[App\Http\Controllers\API\InventoryCategoryController::class,'update'])->middleware('auth:api');
+
