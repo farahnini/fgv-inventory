@@ -28,6 +28,9 @@ class NotificationController extends Controller
     {
         $notification = auth()->user()->notifications()->find($notification);
 
+        // MARK AS READ
+        $notification->markAsRead();
+
         if (!$notification) {
             return response()->json([
                 'message' => 'Notification not found'

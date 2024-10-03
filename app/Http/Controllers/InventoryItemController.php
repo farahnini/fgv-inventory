@@ -89,7 +89,8 @@ class InventoryItemController extends Controller
      */
     public function show(InventoryItem $inventoryItem)
     {
-        //
+        // update read_at
+        $inventoryItem->unreadNotifications->markAsRead();
     }
 
     /**
