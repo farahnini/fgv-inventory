@@ -36,7 +36,7 @@ class InventoryItem extends Model
     // item -> setting HasOne, FK inventory_item_id -> item_id
     public function inventoryItemSetting()
     {                       // MODEL                       // FK        // PK
-        return $this->hasOne(inventoryItemSetting::class, 'item_id');
+        return $this->hasOne(InventoryItemSetting::class, 'item_id');
     }
 
     public function orders()
